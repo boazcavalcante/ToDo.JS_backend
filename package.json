@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node src/server.js --ignore tests",
+    "pretest": "npx knex migrate:rollback && npx knex migrate:latest",
+    "test": "NODE_ENV=test jest"
   },
   "keywords": [],
   "author": "",
