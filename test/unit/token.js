@@ -1,8 +1,7 @@
 const auth = require('../../src/util/auth');
 
-let token = 0;
 const id = 'abcd1234';
-const invalid = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImFiY2QxMjM0IiwiaWF0IjoxNTg3ODMyNzI4LCJleHAiOjE1ODc5MTkxMjh9.abobrinhasJnxMFRuhzOqwVxp9Y5_LHZald2PtRg6dI";
+let token = 0;
 
 describe('Auth token', () => {
   it('should generate a new authentication token', async () => {
@@ -18,6 +17,7 @@ describe('Auth token', () => {
   })
 
   it('should verify an invalid authentication token', async () => {
+    const invalid = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImFiY2QxMjM0IiwiaWF0IjoxNTg3ODMyNzI4LCJleHAiOjE1ODc5MTkxMjh9.abobrinhasJnxMFRuhzOqwVxp9Y5_LHZald2PtRg6dI";
     const decoded = auth.verify(invalid);
 
     expect(decoded).toBeFalsy()

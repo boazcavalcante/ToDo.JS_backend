@@ -11,12 +11,11 @@ exports.getOne = async conditions => await connection('items')
 exports.exists = async conditions => !! await this.getOne(conditions);
 
 exports.create = async item => {
-
   if (
     !item.title ||
     !item.done ||
     !item.user_id ||
-    await this.exists({ title: item.title })
+    await this.exists({ title: item.title, user_id: item.user_id })
   ) return false;
 
   return !!await connection('items').insert(item);
